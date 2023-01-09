@@ -61,7 +61,18 @@ function initMap() {
         fetchData(data[i].siret).then(img => {
           const logo = img;
           console.log(logo)
-          const text = `<div><img src="data:image/jpeg;base64,${logo}"><p>${data[i].name}</p><p>${data[i].address}</p><p>${data[i].phone}</p></div>`;
+          const text = `<div class="company">
+          <img class="company-logo" src="data:image/jpeg;base64,${logo}">
+          <div class="company-name">
+              <p>${data[i].name}</p>
+          </div>
+          <div class="company-address">
+              <p>${data[i].address}</p>
+          </div>
+          <div class="company-phone">
+              <p>${data[i].phone}</p>
+          </div>
+      </div>`;
           marker.bindPopup(text);
           // Ajouter l'écouteur d'événement click au marqueur
           marker.addEventListener('click', (event) => {

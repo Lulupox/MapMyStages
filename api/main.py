@@ -7,7 +7,7 @@ CORS(app)
 
 @app.route('/api/company')
 def get_data():
-    with open('api/data.json', 'r') as f:
+    with open('api/data.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
     return jsonify(data)
 

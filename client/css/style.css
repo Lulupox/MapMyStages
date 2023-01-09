@@ -1,3 +1,13 @@
 #map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
     height:90vh;
 }
+
+.leaflet-popup-content-wrapper, .leaflet-popup {
+    background-color: #222;
+    color: #fff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.leaflet-popup-tip {
+    background: #222;
+}

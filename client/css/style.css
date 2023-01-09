@@ -1,5 +1,5 @@
 body {
-    background-color: #222;
+    background-color: #121212;
 }
 
 #map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
@@ -7,11 +7,11 @@ body {
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup {
-    background-color: #222;
+    background-color: #121212;
     color: #fff;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .leaflet-popup-tip {
-    background: #222;
+    background: #121212;
 }

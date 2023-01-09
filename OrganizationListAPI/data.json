@@ -1,0 +1,16 @@
+[
+    {
+        "name": "IPC INFORMATIQUE",
+        "address" : "2 Rue des Frères Montgolfier, 38920 Crolles",
+        "phone": "04 76 92 19 38",
+        "coords": "45.271898244443655, 5.893373809665711",
+        "siret": "82220890600021"
+    },
+    {
+        "name": "Altiva Solutions",
+        "address" : "19 Bd des Alpes, 38240 Meylan",
+        "phone": "04 76 52 56 11",
+        "coords": "45.20393546010001, 5.767646849472529",
+        "siret": "42088887700024"
+    }
+]

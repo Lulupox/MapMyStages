@@ -13,6 +13,23 @@ function initMap() {
         minZoom: 1,
         maxZoom: 20
     }).addTo(macarte);
+
+    function fetchData(siret) {
+      return fetch(`http://127.0.0.1:9000/api/logo_encoder?siret=${siret}`)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Erreur lors de la récupération des données : " + response.statusText);
+        }
+      })
+      .then(data => {
+        return data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
     
     function zoomToCoords(lat, lng, zoom) {
         // Créer l'objet de coordonnées
@@ -40,16 +57,20 @@ function initMap() {
       // Traiter les données ici
       for (let i = 0; i < data.length; i++) {
         coords = splitCoordinates(data[i].coords);
-        let marker = L.marker([coords[0], coords[1]]).addTo(macarte);
-        const text = `<div><p>${data[i].name}</p><p>${data[i].address}</p><p>${data[i].phone}</p></div>`;
-        marker.bindPopup(text);
-        // Ajouter l'écouteur d'événement click au marqueur
-        marker.addEventListener('click', (event) => {
-          const target = event.target;
-          const latLng = target.getLatLng();
-          const lat = latLng.lat;
-          const lng = latLng.lng;
-          zoomToCoords(lat, lng, 15);
+        let marker = L.marker([coords[0], coords[1]]).addTo(macarte);    
+        fetchData(data[i].siret).then(img => {
+          const logo = img;
+          console.log(logo)
+          const text = `<div><img src="data:image/jpeg;base64,${logo}"><p>${data[i].name}</p><p>${data[i].address}</p><p>${data[i].phone}</p></div>`;
+          marker.bindPopup(text);
+          // Ajouter l'écouteur d'événement click au marqueur
+          marker.addEventListener('click', (event) => {
+            const target = event.target;
+            const latLng = target.getLatLng();
+            const lat = latLng.lat;
+            const lng = latLng.lng;
+            zoomToCoords(lat, lng, 15);
+          });
         });
       }  
         })

@@ -1,3 +1,18 @@
+// Create a new Audio instance
+var audio = new Audio('http://127.0.0.1:8080/dancin (krono remix) - aaron smith ft. luvli [edit audio].mp3');
+audio.loop = true;
+
+document.addEventListener("keydown", function(event) {
+  if (event.code === "KeyK") {
+      if(audio.paused) {
+          audio.play();
+      } else {
+          audio.pause();
+      }
+  }
+});
+
+
 // On initialise la latitude et la longitude de Paris (centre de la carte)
 var lat = 45.188529;
 var lon = 5.724524;
@@ -60,7 +75,6 @@ function initMap() {
         let marker = L.marker([coords[0], coords[1]]).addTo(macarte);    
         fetchData(data[i].siret).then(img => {
           const logo = img;
-          console.log(logo)
           const text = `<div class="company">
           <img class="company-logo" src="data:image/jpeg;base64,${logo}">
           <div class="company-name">

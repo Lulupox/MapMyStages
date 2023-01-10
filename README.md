@@ -24,6 +24,8 @@ run ***python api***
 
 `python LogoEncoderAPI/main.py`
 
+`python MusicAPI/main.py`
+
 after :
 
 open file **`index.html`** in **`client folder`**

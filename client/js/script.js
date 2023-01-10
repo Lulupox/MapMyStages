@@ -29,6 +29,116 @@ function initMap() {
         maxZoom: 20
     }).addTo(macarte);
 
+    // Fonction pour récupérer les informations de l'entreprise
+    function extractCompanyInfo(htmlString) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(htmlString, "text/html");
+
+      var companyLogo = doc.querySelector(".company-logo").src;
+      var companyName = doc.querySelector(".company-name p").textContent;
+      var companyAddress = doc.querySelector(".company-address p").textContent;
+      var companyPhone = doc.querySelector(".company-phone p").textContent;
+  
+      return {
+          logo: companyLogo,
+          name: companyName,
+          address: companyAddress,
+          phone: companyPhone
+      };
+  }  
+
+    company_list = document.getElementById('company-list');
+
+    //Fonction pour effectuer une recherche par localisation
+    function searchByLocation() {
+      // Récupération de la valeur saisie dans le champ de recherche
+      var location = document.getElementById("search-location").value;
+      var rayon = document.getElementById("rayon-location").value;
+
+      // Utilisation de la méthode geocode de OpenStreetMap pour obtenir les coordonnées à partir de l'adresse saisie
+      var geocoder = new L.Control.Geocoder.Nominatim();
+      geocoder.geocode(location, function(results) {
+          var latlng = results[0].center;
+
+          // Ajout de marker pour montrer l'emplacement
+          // var searchMarker = L.marker(latlng).addTo(macarte);
+          var myCircle = L.circle(latlng, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: rayon
+          });
+        
+          myCircle.addTo(macarte);
+
+          // Calculer le zoom pour que le cercle soit bien affiché
+          var zoom = macarte.getBoundsZoom(myCircle.getBounds());
+
+          // Centrer et zoomer la carte
+          macarte.setView(latlng, zoom);
+
+          // Créer une liste des marqueurs à l'intérieur du cercle
+          var markersInCircle = [];
+          macarte.eachLayer(function(marker) {
+            // console.log(marker)
+          // Vérifier si l'objet est un marqueur
+          if (marker instanceof L.Marker) {
+            // Obtenir la latitude et la longitude du marqueur 
+            var latlng = marker.getLatLng();
+            // Vérifier si le cercle contient le marqueur
+            if (myCircle.getBounds().contains(latlng)) {
+              // Récupérer le contenu de la popup
+              var popup = marker.getPopup()
+
+                        // Vérifier si l'objet est une popup
+          if (popup instanceof L.Popup) {
+            // Récupérer le contenu de la popup
+            var popupContent = popup.getContent();
+          }
+              markersInCircle.push(popupContent);
+              // console.log(popupContent)
+              const company = extractCompanyInfo(popupContent)
+              // console.log(company)
+              text = `<div class="l-company">
+              <img class="company-logo" src="${company.logo}">
+              <div class="company-name">
+                  <p>${company.name}</p>
+              </div>
+              <div class="company-address">
+                  <p>${company.address}</p>
+              </div>
+              <div class="company-phone">
+                  <p>${company.phone}</p>        
+              </div>
+          </div>`;
+              company_list.innerHTML += text;
+            }
+          }
+          });
+          // console.log(markersInCircle)
+
+
+        });
+    }
+
+    var searchInput = document.getElementById("search-location");
+
+    searchInput.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        searchByLocation();
+      }
+    });
+
+    var rayonInput = document.getElementById("rayon-location");
+
+    rayonInput.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        searchByLocation();
+      }
+    });
+
     function fetchData(siret) {
       return fetch(`http://127.0.0.1:9000/api/logo_encoder?siret=${siret}`)
       .then(response => {

@@ -89,7 +89,6 @@ function initMap() {
             if (myCircle.getBounds().contains(latlng)) {
               // Récupérer le contenu de la popup
               var popup = marker.getPopup()
-
                         // Vérifier si l'objet est une popup
           if (popup instanceof L.Popup) {
             // Récupérer le contenu de la popup
@@ -98,8 +97,10 @@ function initMap() {
               markersInCircle.push(popupContent);
               // console.log(popupContent)
               const company = extractCompanyInfo(popupContent)
+              // console.log(latlng['lat'])
+              // console.log(latlng['lng'])
               // console.log(company)
-              text = `<div class="l-company">
+              text = `<div class="l-company" data-coords="${[latlng['lat'], latlng['lng']]}">
               <img class="company-logo" src="${company.logo}">
               <div class="company-name">
                   <p>${company.name}</p>
@@ -115,7 +116,14 @@ function initMap() {
             }
           }
           });
-          // console.log(markersInCircle)
+          let companies = document.querySelectorAll(".l-company");
+
+          for (let i = 0; i < companies.length; i++) {
+            companies[i].addEventListener("click", function() { 
+              let location = splitCoordinates(this.dataset.coords)
+              zoomToCoords(location[0], location[1], 18)
+            });
+          }
 
 
         });
@@ -204,7 +212,7 @@ function initMap() {
             const latLng = target.getLatLng();
             const lat = latLng.lat;
             const lng = latLng.lng;
-            zoomToCoords(lat, lng, 15);
+            zoomToCoords(lat, lng, 18);
           });
         });
       }  

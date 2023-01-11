@@ -22,6 +22,8 @@ Notre projet de carte HTML interactive vise à aider les étudiants à trouver d
 
 run ***start.bat***
 
+### project images
+
 `Interface index.html`
 
 ![Interface index.html](https://i.goopics.net/b4cgjn.png)

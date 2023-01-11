@@ -15,6 +15,8 @@ Notre projet de carte HTML interactive vise à aider les étudiants à trouver d
 ### install project
 `git clone https://github.com/Lulupox/MapMyStages`
 
+`pip install -r requirements.txt`
+
 ### run project
 `cd MapMyStage` for enter in directory after :
 

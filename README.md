@@ -18,14 +18,4 @@ Notre projet de carte HTML interactive vise à aider les étudiants à trouver d
 ### run project
 `cd MapMyStage` for enter in directory after :
 
-run ***python api***
-
-`python OrganizationListAPI/main.py`
-
-`python LogoEncoderAPI/main.py`
-
-`python MusicAPI/main.py`
-
-after :
-
-open file **`index.html`** in **`client folder`**
+run ***start.bat***

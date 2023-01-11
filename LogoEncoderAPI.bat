@@ -1,1 +1,0 @@
-python LogoEncoderAPI/main.py

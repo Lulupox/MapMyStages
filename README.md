@@ -22,5 +22,10 @@ Notre projet de carte HTML interactive vise à aider les étudiants à trouver d
 
 run ***start.bat***
 
+`Interface index.html`
+
 ![Interface index.html](https://i.goopics.net/b4cgjn.png)
+
+`Recherche d'entreprises aux alentours`
+
 ![Recherche d'entreprises aux alentours](https://i.goopics.net/pwbu7p.png)

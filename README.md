@@ -21,3 +21,7 @@ Notre projet de carte HTML interactive vise à aider les étudiants à trouver d
 `cd MapMyStage` for enter in directory after :
 
 run ***start.bat***
+
+https://i.goopics.net/b4cgjn.png
+
+https://i.goopics.net/pwbu7p.png

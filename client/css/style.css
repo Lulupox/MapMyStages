@@ -1,17 +1,18 @@
 body {
-    height: 100%;
-    background-color: #121212;
-    display:flex;
-    flex-direction:column;
-    min-height:100vh;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  height: 100%;
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .content {
-  width: 100%;
+  opacity: 0;
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -19,23 +20,20 @@ body {
 }
 
 #company-list {
-  width: 400px;
+  width: 250px;
   height: 600px;
-  /* background-color: #fff; */
-
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   overflow-y: scroll;
   overflow-x: none;
-
   color: #fff;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-size: 14px;
+  background-color: #3f3351;
 }
 
-/* Masquer la barre de défilement par défaut */
+ /* Masquer la barre de défilement par défaut */
 #company-list::-webkit-scrollbar { 
   width: 0.2em;
   background-color: #F5F5F5; 
@@ -43,12 +41,12 @@ body {
 
 /* Donner un style à la barre de défilement en cours d'utilisation */
 #company-list::-webkit-scrollbar-thumb {
-background-color: #000000;
+  background-color: #000000;
 }
 
 /* Apparence de la barre de défilement lorsque l'utilisateur passe la souris dessus */
 #company-list::-webkit-scrollbar-thumb:hover {
-background-color: #555; 
+  background-color: #555; 
 }
 
 .l-company {
@@ -59,8 +57,7 @@ background-color: #555;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
-  background-color: #121212;
+  background-color: #e9a6a6;
   border-radius: 15px;
 }
 
@@ -75,99 +72,359 @@ background-color: #555;
   justify-content: space-around;
 }
 
-#search-location {
-  width: 380px; /* Largeur du champ de saisie */
-  padding: 12px 20px; /* Marge interne */
-  margin: 8px 0; /* Marge extérieure */
-  box-sizing: border-box; /* Assure que la marge et le padding sont inclus dans la largeur */
-  border: 2px solid #ccc; /* Ajoute une bordure */
-  border-radius: 4px; /* Ajoute des angles arrondis */
-  font-size: 16px; /* Taille de police */
-  transition: 0.3s; /* Ajoute une transition pour l'effet de survol */
-}
-
+#search-location,
 #rayon-location {
-  width: 380px; /* Largeur du champ de saisie */
-  padding: 12px 20px; /* Marge interne */
-  margin: 8px 0; /* Marge extérieure */
-  box-sizing: border-box; /* Assure que la marge et le padding sont inclus dans la largeur */
-  border: 2px solid #ccc; /* Ajoute une bordure */
-  border-radius: 4px; /* Ajoute des angles arrondis */
-  font-size: 16px; /* Taille de police */
-  transition: 0.3s; /* Ajoute une transition pour l'effet de survol */
+  width: 380px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
-#search-location:focus {
-  border: 2px solid #555; /* Change la couleur de la bordure lorsque le champ est sélectionné */
-  outline: none; /* Retire la bordure floue qui apparaît lorsque le champ est sélectionné */
+#search-location:focus,
+#rayon-location:focus {
+  border: 2px solid #555;
+  outline: none;
 }
 
-
-#map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-    height:80vh;
-    width: 100%;
+#map {
+  height: 80vh;
+  width: 100%;
 }
 
-.leaflet-popup, .leaflet-popup-content-wrapper, .leaflet-popup-content {
-    height: 250px;
-    width: 300px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    justify-content: space-between;
-}
-
-.leaflet-popup-content-wrapper, .leaflet-popup {
-    background-color: #121212;
-    color: #fff;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 14px;
-    border-radius: 15px;
+.leaflet-popup,
+.leaflet-popup-content-wrapper,
+.leaflet-popup-content {
+  height: 250px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212;
+  color: #fff;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: 14px;
+  border-radius: 15px;
 }
 
 .leaflet-popup-tip {
-    background: #121212;
+  background: #121212;
 }
 
 .company {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
-  
-  .company-logo {
-    height: 40px;
-    width: 40px;
-    border: 1px solid white;
-    border-radius: 15px;
+
+.company-logo {
+  height: 40px;
+  width: 40px;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+.company-name,
+.company-address,
+.company-phone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 80%;
+  text-align: center;
+  background-color: rgb(84, 61, 96);
+  border-radius: 15px;
+  color: #fff;
+  font-family: "Quicksand", sans-serif;
+}
+
+.company-name p,
+.company-address p,
+.company-phone p {
+  width: 80%;
+  height: auto;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.loader {
+	--color: white;
+	--size-mid: 6vmin;
+	--size-dot: 1.5vmin;
+	--size-bar: 0.4vmin;
+	--size-square: 3vmin;
+	
+	display: block;
+	position: relative;
+	width: 50%;
+	display: grid;
+	place-items: center;
+}
+
+.loader::before,
+.loader::after {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+}
+
+/**
+	loader --6
+**/
+.loader.--6::before {
+	width: var(--size-square);
+	height: var(--size-square);
+	background-color: var(--color);
+	top: calc(50% - var(--size-square));
+	left: calc(50% - var(--size-square));
+	animation: loader-6 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+}
+
+@keyframes loader-6 {
+	0%, 100% {
+		transform: none;
+	}
+	
+	25% {
+		transform: translateX(100%);
+	}
+	
+	50% {
+		transform: translateX(100%) translateY(100%);
+	}
+	
+	75% {
+		transform: translateY(100%);
+	}
+}
+
+/**
+	loader --7
+**/
+.loader.--7::before,
+.loader.--7::after {
+	width: var(--size-square);
+	height: var(--size-square);
+	background-color: var(--color);
+}
+
+.loader.--7::before {
+	top: calc(50% - var(--size-square));
+	left: calc(50% - var(--size-square));
+	animation: loader-6 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+}
+
+.loader.--7::after {
+	top: 50%;
+	left: 50%;
+	animation: loader-7 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+}
+
+@keyframes loader-7 {
+	0%, 100% {
+		transform: none;
+	}
+	
+	25% {
+		transform: translateX(-100%);
+	}
+	
+	50% {
+		transform: translateX(-100%) translateY(-100%);
+	}
+	
+	75% {
+		transform: translateY(-100%);
+	}
+}
+
+/**
+	miscs
+**/
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(3, 18vmin);
+	grid-template-rows: repeat(3, 18vmin);
+	grid-gap: 1vmin;
+}
+
+.item	{
+	background: rgba(255, 255, 255, 0.1);
+	display: grid;
+	place-items: center;
+	border-radius: 4px;
+	transition: opacity 0.4s ease;
+}
+
+.fadeout {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.loader {
+  position: fixed;
+  z-index: 9999;
+  width: auto;
+  height: 100%;
+  background: #000;
+  text-align: center;
+  -webkit-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  background-color: #b4a5a5;
+  width: 100%;
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 17rem;
+  min-height: 100%;
+  background-color: #1f1d36;
+}
+
+.side-bar .logo-top {
+  padding: 1em;
+  background-color: #3f3351;
+}
+
+.side-bar .logo-top img {
+  width: 90%;
+  height: auto;
+}
+
+.side-bar .logo-top svg {
+  width: 80%;
+  height: auto;
+}
+
+.side-bar ul {
+  padding: 1em;
+  list-style-type: none;
+}
+
+.side-bar ul li {
+  margin: 0.5rem 0;
+  padding: 0.5em;
+  width: 100%;
+  text-align: left;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.side-bar ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.side-bar ul li:hover {
+  background-color: #864879;
+}
+
+.side-bar ul li.active {
+  background-color: #e9a6a6;
+  -webkit-transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.side-bar ul li.active a {
+  -webkit-transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  color: #864879;
+}
+
+@media (max-width: 768px) {
+  .side-bar {
+    width: 7.5rem;
   }
-  
-  .company-name,
-  .company-address,
-  .company-phone {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 80%;
+  .side-bar .logo-top img {
+    display: none;
+  }
+  .side-bar ul li {
     text-align: center;
-    background-color: rgb(84, 61, 96);
-    border-radius: 15px;
+    font-size: 1.2rem;
   }
-  
-  .company-name p,
-  .company-address p,
-  .company-phone p {
-    width: 80%;
-    height: 100%;
-    text-align: center;
-    font-size: 0.8em;
+  .side-bar ul span {
+    display: none;
   }
-  
+}
+
+@media (min-width: 769px) {
+  .side-bar .logo-top svg {
+    display: none;
+  }
+}
+
+.logo-top {
+  text-align: center;
+}
+
+.logo-top a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-content {
+  min-height: 100vh;
+  margin-left: 17rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+.main-content .create,
+.main-content .load,
+.main-content .settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+}
+
+div[data-view-active="false"] {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 7.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-content {
+    padding: 1rem !important;
+  }
+}

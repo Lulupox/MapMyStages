@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload PDF</title>
+  </head>
+  <body>
+    <form>
+      <input type="file" id="pdf-file" accept="application/pdf">
+      <button type="button" id="upload-btn">Upload</button>
+    </form>
+    <div id="response"></div>
+  </body>
+  <script>
+    const uploadBtn = document.getElementById("upload-btn");
+    const pdfFile = document.getElementById("pdf-file");
+    const responseDiv = document.getElementById("response");
+    const API_URL = "http://localhost:5000/companies/add";
+    uploadBtn.addEventListener("click", () => {
+      const formData = new FormData();
+    formData.append("file", pdfFile.files[0]);
+    formData.append("name", "IPC INFORMATIQUE");
+    formData.append("address", "2 Rue des Frères Montgolfier, 38920 Crolles");
+    formData.append("phone", "04 76 92 19 38");
+    formData.append("coords", "45.271898244443655, 5.893373809665711");
+    formData.append("siret", "82220890600021");
+    fetch(API_URL, {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    responseDiv.innerHTML = `Résumé: ${data.summary}`;
+  })
+  .catch(error => console.error(error));
+});

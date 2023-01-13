@@ -152,22 +152,22 @@ function initMap() {
 		}
 	});
 
-	function fetchData(siret) {
-		return fetch(`http://127.0.0.1:9000/api/logo_encoder?siret=${siret}`)
-			.then(response => {
-				if (response.ok) {
-					return response.json();
-				} else {
-					throw new Error("Erreur lors de la récupération des données : " + response.statusText);
-				}
-			})
-			.then(data => {
-				return data;
-			})
-			.catch(error => {
-				console.error(error);
-			});
-	}
+	async function fetchData(siret) {
+		try {
+		  const apiUrl = 'http://localhost:9000/api/logo_encoder';
+		  const params = new URLSearchParams({siret});
+		  const response = await fetch(`${apiUrl}?${params}`);
+		  if (!response.ok) {
+			throw new Error(`Error ${response.status}: ${response.statusText}`);
+		  }
+		  const data = await response.json();
+		  return data;
+		} catch (error) {
+		  console.error(error);
+		}
+	  }
+	  
+	  
 
 	function zoomToCoords(lat, lng, zoom) {
 		// Créer l'objet de coordonnées
@@ -189,25 +189,26 @@ function initMap() {
 		return [latitude, longitude];
 	}
 
-	fetch('http://127.0.0.1:8000/api/company')
+	fetch('http://127.0.0.1:8000/companies')
 		.then(response => response.json())
 		.then(data => {
+			console.log
 			// Traiter les données ici
 			for (let i = 0; i < data.length; i++) {
-				coords = splitCoordinates(data[i].coords);
+				coords = splitCoordinates(data[i]['company'].coords);
 				let marker = L.marker([coords[0], coords[1]]).addTo(macarte);
-				fetchData(data[i].siret).then(img => {
+				fetchData(data[i]['company'].siret).then(img => {
 					const logo = img;
 					const text = `<div class="company">
           <img class="company-logo" src="data:image/jpeg;base64,${logo}">
           <div class="company-name">
-              <p>${data[i].name}</p>
+              <p>${data[i]['company'].name}</p>
           </div>
           <div class="company-address">
-              <p>${data[i].address}</p>
+              <p>${data[i]['company'].address}</p>
           </div>
           <div class="company-phone">
-              <p>${data[i].phone}</p>
+              <p>${data[i]['company'].phone}</p>
           </div>
       </div>`;
 					marker.bindPopup(text);

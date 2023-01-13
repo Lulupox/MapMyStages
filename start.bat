@@ -1,1 +1,3 @@
-python start.py
+@echo off
+start /b python "start.py"
+pause

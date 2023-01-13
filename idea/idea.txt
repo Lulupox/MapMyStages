@@ -1,0 +1,10 @@
+http://localhost:7500/companies/add?name=<name>&address=<address>&phone=<phone>&coords=<coord>&siret=<code_siret>
+
+http://localhost:8000/companies/remove?siret=<code_siret>
+
+Créez un programme Python qui prend en entrée un fichier PDF
+et le transforme en texte afin de l'envoyer à l'API d'OpenAI
+pour produire un résumé de rapport de stage associé à l'entreprise,
+afin que les gens puissent voir globalement ce que l'entreprise fait.
+Créez également une interface HTML pour ajouter l'entreprise et le rapport
+de stage au format PDF à la base de données avec les données de l'entreprise.

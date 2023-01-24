@@ -1,28 +1,19 @@
-# MapMyStages
+# <p align="center">MapMyStages</p>
 
-<p align="center">
-  <a href="//discord.gg/mTBrXyWxAF"><img src="https://img.shields.io/discord/739934735387721768?logo=discord"></a>
-  <a href="//github.com/Lulupox/MapMyStages/releases"><img src="https://img.shields.io/github/v/release/Lulupox/MapMyStages"></a>
-  <a href="//github.com/Lulupox/MapMyStages/commits/main"><img src="https://img.shields.io/github/last-commit/Lulupox/MapMyStages"></a>
-  <a href="//github.com/Lulupox/MapMyStages/releases"><img src="https://img.shields.io/github/downloads/Lulupox/MapMyStages/total"></a>
-  <a href="//github.com/Lulupox/MapMyStages/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/Lulupox/MapMyStages"></a>
-  <a href="//github.com/Lulupox/MapMyStages"><img src="https://img.shields.io/github/languages/code-size/Lulupox/MapMyStages"></a>
-  <a href="//github.comLulupox/MapMyStages/issues"><img src="https://img.shields.io/github/issues-raw/Lulupox/MapMyStages"></a>
-</p>
+Notre projet de carte interactive en HTML vise à aider les étudiants à trouver des stages près de chez eux. La carte comprend des marqueurs pour chaque stage disponible et permet aux utilisateurs de naviguer facilement et de rechercher des entreprises en fonction de leur localisation. Rejoignez notre communauté pour contribuer à l'amélioration de cet outil pratique pour ceux qui cherchent à développer leur expérience professionnelle.
 
-Notre projet de carte HTML interactive vise à aider les étudiants à trouver des stages près de chez eux. La carte comprend des marqueurs pour chaque stage disponible et permet aux utilisateurs de naviguer facilement. Rejoignez-nous pour améliorer cet outil utile pour ceux qui cherchent à développer leur expérience professionnelle.
+## 🛠️ Installation des dépendances
+```bash
+git clone https://github.com/Lulupox/MapMyStages
+```
 
-### install project
-`git clone https://github.com/Lulupox/MapMyStages`
+```bash
+pip install -r requirements.txt
+```
+### Exécution du projet
+Entrez dans le répertoire en utilisant la commande `cd MapMyStage` puis exécutez le fichier `start.bat`.
 
-`pip install -r requirements.txt`
-
-### run project
-`cd MapMyStage` for enter in directory after :
-
-run ***start.bat***
-
-### project images
+### Images du projet
 
 `Interface index.html`
 
@@ -31,3 +22,10 @@ run ***start.bat***
 `Recherche d'entreprises aux alentours`
 
 ![Recherche d'entreprises aux alentours](https://i.goopics.net/pwbu7p.png)
+
+## 🧐 Fonctionnalités
+- Recherche de stages par localisation
+- Affichage des entreprises et des stages disponibles sur la carte
+- Possibilité de filtrer les résultats de recherche par secteur d'activité
+- Mise à jour régulière des offres de stages disponibles
+- Interface utilisateur intuitive et facile à utiliser.
